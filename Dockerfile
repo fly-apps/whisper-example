@@ -11,14 +11,13 @@ RUN cd /cuda-samples/Samples/1_Utilities/deviceQuery && \
 
 FROM base as runtime
 RUN apt install -y --no-install-recommends ffmpeg libcudnn8 libcublas-12-2 \
-                                           git python3 python3-pip \
-    && pip install git+https://github.com/openai/whisper.git
+                                           git python3 python3-pip
 
 WORKDIR /app
 
 COPY --from=builder /usr/local/bin/deviceQuery /usr/local/bin/deviceQuery
 COPY run.py /app/run.py
 COPY audio.mp3 /app/audio.mp3
+COPY entrypoint.sh /entrypoint
 
-CMD ["python3", "run.py"]
-
+CMD ["/entrypoint"]

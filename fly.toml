@@ -10,4 +10,4 @@ primary_region = "ord"
 
 [[mounts]]
   source = "data"
-  destination = "/root/.cache/whisper"
+  destination = "/root/.cache"
