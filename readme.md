@@ -19,9 +19,11 @@ fly apps create <some app>
 #    --volume-initial-size 20     -> create a new volume on create
 #    --wait-timeout 600           -> Wait longer for the Machine to start
 #    --ha=false                   -> Only create one Machine instance
+#    --restart no                 -> Just run once (alternatively, use --rm)
 fly deploy --vm-gpu-kind a100-pcie-40gb \
     --volume-initial-size 20 \
-    --wait-timeout 600 --ha=false
+    --wait-timeout 600 --ha=false \
+    --restart no
 ```
 
 File `audio.mp3` provided by https://www.flatworldsolutions.com/transcription/samples.php and converted to mp3 via:
@@ -29,5 +31,4 @@ File `audio.mp3` provided by https://www.flatworldsolutions.com/transcription/sa
 ```bash
 ffmpeg -i Monologue.ogg -b:a 192k audio.mp3
 ```
-
 
